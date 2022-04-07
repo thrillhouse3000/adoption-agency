@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Pet Form{% endblock %}
+
+{% block content %}
+    <h1 class="mb-3">Add Pet Form</h1>
+
+    <form id='add_pet_form' method="POST">
+        {% include 'form_logic.html' %}
+    </form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{{form.hidden_tag()}}
+
+{% for field in form if field.widget.input_type != 'hidden' %}
+    <p>
+        {% if field == form.available %}
+            {{field.label(class_='form-check-label mt-3')}}
+            {{field(class_='form-check-input mt-3')}}
+        {% else %}
+            {{field.label(class_='form-label')}}
+            {{field(class_='form-control text-center')}}
+        {% endif %}
+        {% for error in field.errors %}
+            {{error}}
+        {% endfor %}
+    </p>
+{% endfor %}
+
+<button class="btn btn-success" type="submit">Submit</button>
+<div>
+    <a class='btn btn-primary mt-3' href="/">Back To Home Page</a>
+</div>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Pets Index{% endblock %}
+
+{% block content %}
+    <h1>Pets Index</h1>
+
+    <a class='btn btn-success mb-3' href="/pets/add">Add A Pet</a>
+
+    <div class="row justify-content-center">
+    {% for pet in pets%}
+    <div class="col-4">
+        <div class="card d-flex mb-3" style="width: 27rem; height: 32rem;">
+            <img src="{{pet.img_url}}" alt="" class="card-img-top h-50">
+            <div class="card-body">
+                <h5 class="card-title"><a href="/pets/{{pet.id}}">{{pet.name}}</a></h5>
+                <p class="card-text">Species: {{pet.species}}</p>
+                <p class="card-text">Age: {{pet.age}}</p>
+                <p class="card-text">Notes: {{pet.notes}}</p>
+                {% if pet.available == True %}
+                <p class="card-text"><b>Available for Adoption</b></p>
+                {% else %}
+                <p class="card-text"><b>Not Available for Adoption</b></p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+{% endblock %}

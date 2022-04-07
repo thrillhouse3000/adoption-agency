@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Details for {{pet.name}}{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <h1>{{pet.name}}</h1>
+            <div class="card d-flex mb-3" style="width: 25rem; height: 35rem;">
+                <img src="{{pet.img_url}}" alt="" class="card-img-top h-50">
+                <div class="card-body">
+                    <p class="card-text">Species: {{pet.species}}</p>
+                    <p class="card-text">Age: {{pet.age}}</p>
+                    <p class="card-text">Notes: {{pet.notes}}</p>
+                    {% if pet.available == True %}
+                    <p class="card-text"><b>Available for Adoption</b></p>
+                    {% else %}
+                    <p class="card-text"><b>Not Available for Adoption</b></p>
+                    {% endif %}
+                    <div>
+                        <a class='btn btn-warning mb-3' href="/pets/{{pet.id}}/edit">Edit Details for {{pet.name}}</a>
+                    </div>
+                    <div>
+                        <a class='btn btn-primary mb-3' href="/">Back to Home Page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
